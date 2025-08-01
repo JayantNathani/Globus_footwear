@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globus Footwear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --color-hunter-green: #315E4C;
+            --color-navy: #1D3557;
+            --color-burgundy: #7D2E2E;
+            --color-cream: #F5F2E9;
+            --color-beige: #E8DFC9;
+            --color-gold: #C9A66B;
+            --color-charcoal: #333333;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--color-cream);
+            color: var(--color-charcoal);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23315E4C'/%3E%3Cpath d='M0 450 Q 300 300 600 450 T 1200 450 L 1200 600 L 0 600 Z' fill='%23C9A66B'/%3E%3Cpath d='M0 500 Q 300 400 600 500 T 1200 500 L 1200 600 L 0 600 Z' fill='%23F5F2E9'/%3E%3Cpath d='M0 550 Q 300 500 600 550 T 1200 550 L 1200 600 L 0 600 Z' fill='%231D3557'/%3E%3C/svg%3E") center/cover no-repeat;
+            height: 600px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--color-gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-tab {
+            color: var(--color-burgundy);
+            border-bottom: 2px solid var(--color-burgundy);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .btn-primary {
+            background-color: var(--color-hunter-green);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #264a3d;
+        }
+        
+        .btn-secondary {
+            background-color: var(--color-navy);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #162a45;
+        }
+        
+        .btn-accent {
+            background-color: var(--color-gold);
+            color: var(--color-charcoal);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-accent:hover {
+            background-color: #b89355;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-[#315E4C]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-[#333333] font-['Playfair_Display']">Globus Footwear</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-[#333333] hover:text-[#315E4C] transition">Home</a>
+                    <a href="#products" class="nav-link text-[#333333] hover:text-[#315E4C] transition">Products</a>
+                    <a href="#collections" class="nav-link text-[#333333] hover:text-[#315E4C] transition">Collections</a>
+                    <a href="#about" class="nav-link text-[#333333] hover:text-[#315E4C] transition">About</a>
+                    <a href="#contact" class="nav-link text-[#333333] hover:text-[#315E4C] transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block btn-primary px-4 py-2 rounded-md transition">
+                        Shop Now
+                    </button>
+                    <div class="relative">
+                        <svg class="w-6 h-6 text-[#333333]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-[#7D2E2E] text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+                    </div>
+                    <button id="mobile-menu-button" class="md:hidden">
+                        <svg class="w-6 h-6 text-[#333333]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="#home" class="block py-2 text-[#333333] hover:text-[#315E4C]">Home</a>
+                <a href="#products" class="block py-2 text-[#333333] hover:text-[#315E4C]">Products</a>
+                <a href="#collections" class="block py-2 text-[#333333] hover:text-[#315E4C]">Collections</a>
+                <a href="#about" class="block py-2 text-[#333333] hover:text-[#315E4C]">About</a>
+                <a href="#contact" class="block py-2 text-[#333333] hover:text-[#315E4C]">Contact</a>
+                <button class="mt-2 btn-primary px-4 py-2 rounded-md w-full transition">
+                    Shop Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section flex items-center justify-center pt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 font-['Playfair_Display']">Timeless Elegance for Your Feet</h1>
+            <p class="text-xl text-white mb-8 max-w-2xl mx-auto">Discover the perfect blend of tradition and comfort with Globus Footwear's premium collection.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="btn-accent px-8 py-3 rounded-md font-medium transition">
+                    Shop Men
+                </button>
+                <button class="btn-secondary px-8 py-3 rounded-md font-medium transition">
+                    Shop Women
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center text-center p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-[#F5F2E9] p-3 rounded-full mb-4">
+                        <svg class="w-8 h-8 text-[#315E4C]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 font-['Playfair_Display']">Heritage Quality</h3>
+                    <p class="text-[#333333]">Crafted with the finest materials for durability and comfort that lasts generations.</p>
+                </div>
+                
+                <div class="flex flex-col items-center text-center p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-[#F5F2E9] p-3 rounded-full mb-4">
+                        <svg class="w-8 h-8 text-[#1D3557]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path>
+                            <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 font-['Playfair_Display']">Complimentary Delivery</h3>
+                    <p class="text-[#333333]">Enjoy free shipping on all orders over ₹1700.00 nationwide.</p>
+                </div>
+                
+                <div class="flex flex-col items-center text-center p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="bg-[#F5F2E9] p-3 rounded-full mb-4">
+                        <svg class="w-8 h-8 text-[#7D2E2E]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 font-['Playfair_Display']">30-Day Guarantee</h3>
+                    <p class="text-[#333333]">Not satisfied? Return within 30 days for a full refund.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-[#F5F2E9]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2 font-['Playfair_Display'] text-[#315E4C]">Featured Products</h2>
+                <p class="text-[#333333] max-w-2xl mx-auto">Discover our most distinguished footwear styles that combine timeless elegance, comfort, and superior craftsmanship.</p>
+            </div>
+            
+            <div class="flex justify-center mb-8">
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button type="button" class="product-tab active-tab px-6 py-2 text-sm font-medium bg-white" data-tab="all">
+                        All
+                    </button>
+                    <button type="button" class="product-tab px-6 py-2 text-sm font-medium bg-white" data-tab="men">
+                        Men
+                    </button>
+                    <button type="button" class="product-tab px-6 py-2 text-sm font-medium bg-white" data-tab="women">
+                        Women
+                    </button>
+                    <button type="button" class="product-tab px-6 py-2 text-sm font-medium bg-white" data-tab="kids">
+                        Kids
+                    </button>
+                </div>
+            </div>
+            
+            <div id="all" class="tab-content active">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Product 1 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#315E4C]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#7D2E2E] text-white text-xs font-bold px-2 py-1 rounded">
+                                NEW
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Oxford Classic</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(42)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#333333] font-bold">₹2500.00</span>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#1D3557]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#1D3557] text-white text-xs font-bold px-2 py-1 rounded">
+                                POPULAR
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Heritage Loafer</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(78)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#333333] font-bold">₹2450.00</span>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#7D2E2E]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#315E4C] text-white text-xs font-bold px-2 py-1 rounded">
+                                SALE
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Comfort Walker</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(36)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-[#333333] font-bold">₹2300.00</span>
+                                    <span class="text-gray-500 text-sm line-through ml-2">₹2550.00</span>
+                                </div>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#C9A66B]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Equestrian Boot</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(24)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#333333] font-bold">₹3650.00</span>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="men" class="tab-content">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Men's Product 1 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#1D3557]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#1D3557] text-white text-xs font-bold px-2 py-1 rounded">
+                                MEN
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Wingtip Oxford</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(52)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#333333] font-bold">₹3500.00</span>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Men's Product 2 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#7D2E2E]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#7D2E2E] text-white text-xs font-bold px-2 py-1 rounded">
+                                NEW
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Leather Derby</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(18)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#333333] font-bold">₹2650.00</span>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="women" class="tab-content">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Women's Product 1 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#7D2E2E]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#7D2E2E] text-white text-xs font-bold px-2 py-1 rounded">
+                                WOMEN
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Elegant Pump</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(64)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#333333] font-bold">₹2250.00</span>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Women's Product 2 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#315E4C]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#315E4C] text-white text-xs font-bold px-2 py-1 rounded">
+                                SALE
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Leather Ballet Flat</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(42)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-[#333333] font-bold">₹2350.00</span>
+                                    <span class="text-gray-500 text-sm line-through ml-2">₹2400.00</span>
+                                </div>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="kids" class="tab-content">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Kids Product 1 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#C9A66B]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#C9A66B] text-[#333333] text-xs font-bold px-2 py-1 rounded">
+                                KIDS
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Junior Loafer</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(38)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#333333] font-bold">₹1650.00</span>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kids Product 2 -->
+                    <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <div class="relative">
+                            <div class="h-64 bg-[#E8DFC9] flex items-center justify-center">
+                                <svg class="w-24 h-24 text-[#1D3557]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="absolute top-2 left-2 bg-[#1D3557] text-white text-xs font-bold px-2 py-1 rounded">
+                                NEW
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 font-['Playfair_Display']">Academy Shoe</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#C9A66B]">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 text-sm ml-2">(26)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#333333] font-bold">₹1500.00</span>
+                                <button class="btn-secondary px-3 py-1 rounded-md text-sm transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="btn-primary px-8 py-3 rounded-md font-medium transition">
+                    View All Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2 font-['Playfair_Display'] text-[#315E4C]">Our Collections</h2>
+                <p class="text-[#333333] max-w-2xl mx-auto">Explore our curated collections designed for every occasion and lifestyle.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Collection 1 -->
+                <div class="relative rounded-lg overflow-hidden shadow-lg group">
+                    <div class="h-80 bg-[#315E4C] flex items-center justify-center">
+                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2 font-['Playfair_Display']">Heritage Collection</h3>
+                        <p class="mb-4">Timeless designs crafted with traditional techniques and premium materials.</p>
+                        <button class="bg-white text-[#315E4C] hover:bg-gray-100 px-6 py-2 rounded-md font-medium transition w-full md:w-auto">
+                            Explore Collection
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Collection 2 -->
+                <div class="relative rounded-lg overflow-hidden shadow-lg group">
+                    <div class="h-80 bg-[#1D3557] flex items-center justify-center">
+                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2 font-['Playfair_Display']">Equestrian Collection</h3>
+                        <p class="mb-4">Sophisticated boots and shoes inspired by classic equestrian style.</p>
+                        <button class="bg-white text-[#1D3557] hover:bg-gray-100 px-6 py-2 rounded-md font-medium transition w-full md:w-auto">
+                            Explore Collection
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Collection 3 -->
+                <div class="relative rounded-lg overflow-hidden shadow-lg group">
+                    <div class="h-80 bg-[#7D2E2E] flex items-center justify-center">
+                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2 font-['Playfair_Display']">Formal Collection</h3>
+                        <p class="mb-4">Elegant and sophisticated footwear for professional settings and special occasions.</p>
+                        <button class="bg-white text-[#7D2E2E] hover:bg-gray-100 px-6 py-2 rounded-md font-medium transition w-full md:w-auto">
+                            Explore Collection
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-[#F5F2E9]">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 font-['Playfair_Display'] text-[#315E4C]">About Globus Footwear</h2>
+                    <p class="text-[#333333] mb-6">Founded in 2018, Globus Footwear has been dedicated to creating high-quality, comfortable, and stylish footwear for men, women, and children. Our mission is to provide exceptional footwear that combines timeless elegance with modern comfort.</p>
+                    <p class="text-[#333333] mb-6">We source the finest materials from around the world and work with skilled artisans who employ traditional craftsmanship techniques passed down through generations. Our commitment to quality and customer satisfaction has made us a trusted name in the footwear industry for nearly a century.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="btn-primary px-6 py-3 rounded-md font-medium transition">
+                            Our Heritage
+                        </button>
+                        <button class="btn-secondary px-6 py-3 rounded-md font-medium transition">
+                            Join Our Team
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4 font-['Playfair_Display']">Our Values</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-[#F5F2E9] p-2 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-[#315E4C]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium font-['Playfair_Display']">Craftsmanship</h4>
+                                    <p class="text-[#333333] text-sm">We honor traditional techniques and meticulous attention to detail.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-[#F5F2E9] p-2 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-[#1D3557]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium font-['Playfair_Display']">Heritage</h4>
+                                    <p class="text-[#333333] text-sm">We preserve and celebrate our rich history and traditions.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-[#F5F2E9] p-2 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-[#7D2E2E]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium font-['Playfair_Display']">Excellence</h4>
+                                    <p class="text-[#333333] text-sm">We strive for perfection in every pair of shoes we create.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-[#F5F2E9] p-2 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-[#C9A66B]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium font-['Playfair_Display']">Sustainability</h4>
+                                    <p class="text-[#333333] text-sm">We are committed to environmentally responsible practices and ethical sourcing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2 font-['Playfair_Display'] text-[#315E4C]">Client Testimonials</h2>
+                <p class="text-[#333333] max-w-2xl mx-auto">Hear from our distinguished clientele about their experience with Globus Footwear.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-[#F5F2E9] p-6 rounded-lg shadow-md">
+                    <div class="flex text-[#C9A66B] mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-[#333333] mb-6 italic">"I've been wearing Globus shoes for a long time now, and I can confidently say they're the most comfortable and durable shoes I've ever owned. The quality is exceptional, and they age beautifully with time."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-[#1D3557] rounded-full flex items-center justify-center text-white font-bold mr-4">PP</div>
+                        <div>
+                            <h4 class="font-medium font-['Playfair_Display']">Palak Premani</h4>
+                            <p class="text-gray-500 text-sm">Loyal Client since 2018</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-[#F5F2E9] p-6 rounded-lg shadow-md">
+                    <div class="flex text-[#C9A66B] mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-[#333333] mb-6 italic">"As someone who appreciates fine craftsmanship, Globus Footwear has been my go-to for formal occasions. Their attention to detail and use of premium materials is evident in every pair I own."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-[#7D2E2E] rounded-full flex items-center justify-center text-white font-bold mr-4">TC</div>
+                        <div>
+                            <h4 class="font-medium font-['Playfair_Display']">Tanuj Chabadiya</h4>
+                            <p class="text-gray-500 text-sm">Loyal Client since 2020</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-[#F5F2E9] p-6 rounded-lg shadow-md">
+                    <div class="flex text-[#C9A66B] mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-[#333333] mb-6 italic">"I recently purchased a pair of Oxford shoes from Globus for my wedding. Not only did they look impeccable, but they were comfortable enough to wear throughout the entire celebration. Truly exceptional quality."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-[#315E4C] rounded-full flex items-center justify-center text-white font-bold mr-4">NP</div>
+                        <div>
+                            <h4 class="font-medium font-['Playfair_Display']">Nilesh Phulwani</h4>
+                            <p class="text-gray-500 text-sm">Satisfied Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-[#315E4C]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-4 font-['Playfair_Display']">Join Our Mailing List</h2>
+                <p class="text-white/90 mb-8">Subscribe to our newsletter for exclusive offers, new arrivals, and footwear care tips.</p>
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-md focus:outline-none" required>
+                    <button type="submit" class="btn-accent px-6 py-3 rounded-md font-medium transition">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-white/70 text-sm mt-4">By subscribing, you agree to receive marketing emails from Globus Footwear.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2 font-['Playfair_Display'] text-[#315E4C]">Contact Us</h2>
+                <p class="text-[#333333] max-w-2xl mx-auto">Have questions or feedback? We'd be delighted to hear from you.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-[#333333] mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#315E4C]" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-[#333333] mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#315E4C]" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-[#333333] mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#315E4C]" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-[#333333] mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#315E4C]" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary px-6 py-3 rounded-md font-medium transition w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <div class="bg-[#F5F2E9] p-6 rounded-lg shadow-md mb-8">
+                        <h3 class="text-xl font-semibold mb-4 font-['Playfair_Display']">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-white p-2 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-[#315E4C]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium font-['Playfair_Display']">Address</h4>
+                                    <p class="text-[#333333]">Kmal chowk, Tagore Marg, near Punjab Bank, Neemuch Chawni, Neemuch, Madhya Pradesh 458441</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-white p-2 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-[#1D3557]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium font-['Playfair_Display']">Telephone</h4>
+                                    <p class="text-[#333333]">096309 19183</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-white p-2 rounded-full mr-4">
+                                    <svg class="w-6 h-6 text-[#7D2E2E]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium font-['Playfair_Display']">Email</h4>
+                                    <p class="text-[#333333]">enquiries@globusfootwear.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#F5F2E9] p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4 font-['Playfair_Display']">Store Hours</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-[#333333]">Monday - Friday</span>
+                                <span class="font-medium">10:00 AM - 7:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-[#333333]">Saturday</span>
+                                <span class="font-medium">10:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-[#333333]">Sunday</span>
+                                <span class="font-medium">11:00 AM - 5:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1D3557] text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <svg class="w-8 h-8 text-[#C9A66B]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-xl font-bold font-['Playfair_Display']">Globus Footwear</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">Providing quality footwear with timeless elegance since 2018.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/globusshoe_neemuch?igsh=MWM3NWtyaXU2eGczag==" class="text-gray-300 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/globusshoe_neemuch?igsh=MWM3NWtyaXU2eGczag==" class="text-gray-300 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/globusshoe_neemuch?igsh=MWM3NWtyaXU2eGczag==" class="text-gray-300 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.instagram.com/globusshoe_neemuch?igsh=MWM3NWtyaXU2eGczag==" class="text-gray-300 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 font-['Playfair_Display']">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#products" class="text-gray-300 hover:text-white transition">Products</a></li>
+                        <li><a href="#collections" class="text-gray-300 hover:text-white transition">Collections</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 font-['Playfair_Display']">Customer Service</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">FAQs</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Care Instructions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 font-['Playfair_Display']">Visit Our Flagship Store</h3>
+                    <p class="text-gray-300 mb-4">Experience our full collection and personalized fitting service at our flagship store.</p>
+                    <div class="flex flex-col space-y-3">
+                        <a href="#" class="bg-[#C9A66B] text-[#1D3557] px-4 py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-[#b89355] transition font-medium">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Store Locator</span>
+                        </a>
+                        <a href="#" class="bg-white text-[#1D3557] px-4 py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-gray-200 transition font-medium">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Book an Appointment</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-300 mb-4 md:mb-0">&copy; 2023 Globus Footwear. All rights reserved.</p>
+                    <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 items-center">
+                        <p class="text-gray-300">Developed by <span class="text-[#C9A66B] font-medium">Jayant Nathani</span></p>
+                        <div class="flex space-x-6">
+                            <a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a>
+                            <a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top bg-[#C9A66B] hover:bg-[#b89355] text-[#1D3557] w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Product Tabs
+        const productTabs = document.querySelectorAll('.product-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        productTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                productTabs.forEach(t => t.classList.remove('active-tab'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active-tab');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Show the selected tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Scroll to Top Button
+        const scrollToTopButton = document.getElementById('scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'967e6b39b043a81e',t:'MTc1Mzk3ODc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
